@@ -27,6 +27,7 @@ var planets = [{
 var planetHolderDiv = document.getElementById('planetHolder'); //where the planets need to be pushed
 var getPlanetsButton = document.getElementById('showButton'); //create a variable for button that will show the planetBox
 var inputField= document.getElementById('searchText'); //
+var clearInputField = document.getElementById('clearButton'); //create a variable for the button that will clear the input field
 
 function domString(planetz) { //we need to create function that loops through the planet array & prints the planet names and picture links to the dom
 	var planetString = '';
@@ -60,6 +61,12 @@ getPlanetsButton.addEventListener('mouseenter',function(){
 // domString();
 // }
 
+//clear button
+clearInputField.addEventListener('click', function(){
+	inputField.value="";
+	writeToDom('');
+})
+
 function showMe(e) {
 	e.target.previousSibling.classList.remove('hidden');
 }
@@ -84,8 +91,6 @@ inputField.addEventListener('keypress', function(event){
 			console.log("filter thing", thing);
 			return thing.name.indexOf(txt)>-1;
 		})
-		//domString
-		// domString();
 		domString(results);
 	}
 })
